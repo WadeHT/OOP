@@ -1,0 +1,1 @@
+v2 fixed the problem as no input ,the output is yes 

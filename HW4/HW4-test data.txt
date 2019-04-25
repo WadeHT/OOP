@@ -1,0 +1,117 @@
+	//Part1 ´ú¸Õ¿ù»~³B²z(4%)
+	Bag<float> err;
+	err.currentValue();					//¦LPlease initializes(1%)
+	err.currentCount();					//¦LPlease initializes(1%)
+	err.next();									//¦LPlease initializes(1%)
+	err.start();						//¦LPlease input item(1%)
+	
+	//Part2 (34%)
+	Bag<int> NumBag;					//¦LBag constructor(3%)
+	cout << NumBag.empty() << endl;				//¦L1(3%)
+	NumBag.insert(3);					//(4%)
+	NumBag.insert(1);
+	NumBag.insert(4);
+	NumBag.insert(1);
+	NumBag.insert(5);
+	NumBag.insert(9);
+	NumBag.insert(2);
+	NumBag.insert(6);
+	NumBag.insert(5);
+	NumBag.insert(3);
+	NumBag.insert(5);
+	NumBag.insert(9);
+	//¥H¤U¦³¿ù¦©¤À¡Aµù¸Ñ±¼Ä~Äò´ú¡C
+	cout << "Size: " << NumBag.size() << endl;	//¦L12(4%)
+	cout << "Unique Size: " << NumBag.uniqueSize() << endl;//¦L7(4%)
+	cout << "Erase 4: " << NumBag.erase(4) << endl;//¦L3(4%)
+	cout << "Erase All 5: " << NumBag.eraseAll(5) << endl;//¦L3(4%)
+	cout << "Contains 5: " << NumBag.contains(5) << endl;//¦L0(4%)
+	cout << "Count 3: " << NumBag.count(3) << endl;//¦L2(4%)
+	
+	//Part3 Iteration functions: (20%)
+	Bag<string> a;
+	a.insert("a1");
+	a.insert("a2");
+	a.insert("a3");
+	a.insert("a4");
+	a.insert("a5");
+	
+	a.start();
+	while(!a.ended()){
+		cout << a.currentCount() << ". " << a.currentValue() << endl;//¨Ì§Ç¦L¥X1. a1 
+										//2. a2 
+										//3. a3 
+										//4. a4
+										//5. a5
+		a.next();							//­Y¦³¿ù¡A¥i¯à¬Oended()¦³¿ù(-4)
+	}
+	//ended()¦³¿ù®É ¥Î³o­Ó´ú
+	//start(), currentCount(), currentValue(), next()¦U4¤À
+	/*
+	a.start();
+	cout << a.currentCount() << ". " << a.currentValue() << endl;	//¦L1. a1
+	a.next();
+	cout << a.currentCount() << ". " << a.currentValue() << endl;	//¦L2. a2
+	a.next();
+	cout << a.currentCount() << ". " << a.currentValue() << endl;	//¦L3. a3
+	a.next();
+	cout << a.currentCount() << ". " << a.currentValue() << endl;	//¦L4. a4
+	a.next();
+	cout << a.currentCount() << ". " << a.currentValue() << endl;	//¦L5. a5
+	*/
+	
+	//Part4 Copy constructor(6%)
+	Bag<string> a_copy = a;
+	cout << "Size of a_copy: " << a_copy.size() << endl;		//¦L5
+	a.insert("a6");
+	cout << "Size of a_copy: " << a_copy.size() << endl;		//ÁÙ¬O¦L5
+	
+	//Part5 Assignment operator(6%)
+	Bag<string> a_assignment;
+	a_assignment.insert("a0");
+	a_assignment = a;
+	cout << "Size of a_assignment: " << a_assignment.size() << endl;//¦L6
+	
+	//Part6 non-member function(20%)
+	Bag<string> Bag1, Bag2, Bag3;
+	Bag1.insert("A");//A3 B3 C2 D1
+	Bag1.insert("A");
+	Bag1.insert("D");
+	Bag1.insert("B");
+	Bag1.insert("B");
+	Bag1.insert("B");
+	Bag1.insert("C");
+	Bag1.insert("C");
+	Bag1.insert("A");
+
+	Bag2.insert("A");//A1 B2 C3 D2
+	Bag2.insert("B");
+	Bag2.insert("B");
+	Bag2.insert("C");
+	Bag2.insert("C");
+	Bag2.insert("D");
+	Bag2.insert("D");
+	Bag2.insert("C");
+	combine(Bag1, Bag2, Bag3);					//(5%)
+    cout << "A: " << Bag3.count("A") << endl;	//¦L4
+    cout << "B: " << Bag3.count("B") << endl;	//¦L5
+    cout << "C: " << Bag3.count("C") << endl;	//¦L5
+	cout << "D: " << Bag3.count("D") << endl;	//¦L3
+	
+	subtract(Bag1, Bag2, Bag3);					//(5%)	
+    cout << "A: " << Bag3.count("A") << endl;	//¦L2
+    cout << "B: " << Bag3.count("B") << endl;	//¦L1
+    cout << "C: " << Bag3.count("C") << endl;	//¦L0
+	cout << "D: " << Bag3.count("D") << endl;	//¦L0
+	
+	combine(Bag1, Bag3, Bag1);					//(5%)
+	cout << "A: " << Bag1.count("A") << endl;	//¦L5
+    cout << "B: " << Bag1.count("B") << endl;	//¦L4
+    cout << "C: " << Bag1.count("C") << endl;	//¦L2
+	cout << "D: " << Bag1.count("D") << endl;	//¦L1
+	
+	subtract(Bag2, Bag1, Bag2);					//(5%)	
+    cout << "A: " << Bag2.count("A") << endl;	//¦L0
+    cout << "B: " << Bag2.count("B") << endl;	//¦L0
+    cout << "C: " << Bag2.count("C") << endl;	//¦L1
+	cout << "D: " << Bag2.count("D") << endl;	//¦L1
